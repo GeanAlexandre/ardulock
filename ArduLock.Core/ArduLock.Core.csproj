@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D4F1A803-8C95-4856-973C-11327F214CD0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ArduLock.App.Client</RootNamespace>
-    <AssemblyName>ArduLock.App.Client</AssemblyName>
+    <ProjectGuid>{01A7AAD3-575E-40DA-B375-0A973C7364D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArduLock.Core</RootNamespace>
+    <AssemblyName>ArduLock.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,21 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="LockScreenManager.cs" />
+    <Compile Include="Strategy\ILockWorkStationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategy\WindowsUser32LockStationStrategy.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ArduLock.Communication\ArduLock.Communication.csproj">
-      <Project>{a2df1bd0-0d2b-4ae1-9a33-c925485b5b1b}</Project>
-      <Name>ArduLock.Communication</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ArduLock.Core\ArduLock.Core.csproj">
-      <Project>{01a7aad3-575e-40da-b375-0a973c7364d0}</Project>
-      <Name>ArduLock.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

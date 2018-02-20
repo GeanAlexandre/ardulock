@@ -1,7 +1,7 @@
 ﻿using ArduLock.Communication.Server;
-using System;
+using System.IO.Ports;
+using System.Linq;
 using System.ServiceProcess;
-using System.Threading;
 
 namespace ArduLock.WindowsService
 {
@@ -14,16 +14,17 @@ namespace ArduLock.WindowsService
 
         protected override void OnStart(string[] args)
         {
-            new Thread(() =>
-            {
-                var server = new TcpServerHub(LocalHubConnection.Factory());
+            var port = SerialPort.GetPortNames().FirstOrDefault();
+            var connect = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);
+            connect.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
+            connect.DtrEnable = true;
+            connect.Open();
 
-                while (true)
-                {
-                    server.Send(Guid.NewGuid().ToString());
-                }
+        }
 
-            }).Start();
+        private void DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+             new TcpServerHub(LocalHubConnection.Factory()).Send((sender as SerialPort).ReadExisting());
         }
 
         protected override void OnStop()

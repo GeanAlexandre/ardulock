@@ -67,6 +67,10 @@
       <Project>{a2df1bd0-0d2b-4ae1-9a33-c925485b5b1b}</Project>
       <Name>ArduLock.Communication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ArduLock.Core\ArduLock.Core.csproj">
+      <Project>{01a7aad3-575e-40da-b375-0a973c7364d0}</Project>
+      <Name>ArduLock.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ProjectInstaller.resx">
