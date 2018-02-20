@@ -16,7 +16,7 @@ namespace ArduLock.Communication.Client
             _hubConnection = hubConnection;
         }
 
-        public void Listener(Action<string> subscribe, Action<Exception> onError)
+        public void Listener(Action<string> subscribe, Action<Exception> onError = null)
         {
             void AskForever(Action action) { while (true) action?.Invoke(); }
 
